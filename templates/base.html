@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'includes/refrence_html.html' %}
+</head>
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<!-- Header -->
+{% include 'includes/header.html' %}
+
+
+{% block content %}
+    <!-- baray code haie ke ghier moshtarake va dakhel hamon file html minivisim -->
+{% endblock %}l
+
+{% include 'includes/footer.html' %}
+{% include 'includes/refrence_footer.html' %}
+</body>
+</html>
+<!-- baghie code ha moshtarak hastan -->

@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,8 +25,7 @@ SECRET_KEY = 'django-insecure-839ek#kq347$z$*c^o24opl5rw^_sxgx2%j)m^o4ce6(8_2pr(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -37,13 +35,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #myapp
+    # myapp
     'home',
     'account',
     'django.contrib.admin',
     'blog',
-    #ketabkhone clean up
+    # ketabkhone clean up
     'django_cleanup.apps.CleanupConfig',
+    'django_render_partial',
+    'django_social_share',
+    'contact',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -70,13 +72,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # my context.prosseor
+                'context_processors.context.context_processors.recent_posts',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'standblog.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -87,7 +90,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -107,11 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
 TIME_ZONE = 'UTC'
 
@@ -119,17 +120,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,"assets")]#masir mishnase
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets")]  # masir mishnase
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 MEDIA_URL = '/media/'
-MEDIA_ROOT =os.path.join(BASE_DIR,'media')#baray tasavir   dakhel media aksi ke bargozari mishe ghrar migirad
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # baray tasavir   dakhel media aksi ke bargozari mishe ghrar migirad
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

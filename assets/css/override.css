@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Flaction;
+    src : url("../fonts/Flaticon.woff");
+    font-weight: normal;
+    font-style: normal;
+
+}
+*{
+    font-family: Flaction;
+}
