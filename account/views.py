@@ -43,7 +43,7 @@ def register(request):#sabt nam karbar chon karbar jadid vared mishe bayad be da
            context['error'].append("password not true")
         User.objects.create_user(username=username, password=password, email=email)
         redirect("/")
-    return render(request,'account/register.html',context={})
+    return render(request,'account/register.html',{})
 
 
 def edit(request):

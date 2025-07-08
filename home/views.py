@@ -5,8 +5,6 @@ from blog.models import Post
 def home(request):
     author = Post.objects.all()
     recent_posts = Post.objects.all()[:3] #global
-    for x in recent_posts:
-        print(x)
     #recent_post = Post.objects.all().orderby(-created) barsas tarikh joda mishe
     #for post in author:
         #print(post.title)

@@ -49,9 +49,16 @@ class Post(models.Model):
 
     def total_likes(self):
         return self.likes.count()
-
+    #vabasetegi be request nabashe mitavanim dar model benevisim
+    def get_snippet(self):
+        return self.body[:100]
+    
+    #def get_absolute_api_url(self):
+     #   return reverse('blog : api_v1:detail', kwargs={'slug': self.slug})
+   
     def __str__(self):
         return self.title
+
 
 
 

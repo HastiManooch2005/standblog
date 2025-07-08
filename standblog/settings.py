@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django_social_share',
     'contact',
     'widget_tweaks',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,14 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # baray tasavir   dakhel media aksi ke bargozari mishe ghrar migirad
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_FILTER_BACKENDS':  [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'blog.api.v1.page.DefaultPagination',
+    'PAGE_SIZE': 4
+}

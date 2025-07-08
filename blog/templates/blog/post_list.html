@@ -72,7 +72,7 @@
                                         {% endif %}
                                         {% for i in posts.paginator.page_range %}
                                              {# {% if posts.page == i %} #}
-                                                <li ><a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
+                                                <li ><a href="?page={{page}}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
                                             {#  {% endif %} #}
                                         {% endfor %}
                                         {% if posts.has_next %}

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
-
+#from rest_framework.documentation import include_docs_urls
 from standblog import settings
 
 urlpatterns = [
@@ -26,5 +26,7 @@ urlpatterns = [
        path('',include("account.urls")),
        path('',include("blog.urls")),
        path('',include("contact.urls")),
+       path('api_auth',include('rest_framework.urls')),
+       #path('api_docus/',include_docs_urls(title='API')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
