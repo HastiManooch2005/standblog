@@ -7,22 +7,24 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0013_alter_category_options_alter_comment_options_and_more'),
+        ("blog", "0013_alter_category_options_alter_comment_options_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='like',
-            name='post',
+            model_name="like",
+            name="post",
         ),
         migrations.RemoveField(
-            model_name='like',
-            name='user',
+            model_name="like",
+            name="user",
         ),
         migrations.AddField(
-            model_name='like',
-            name='likes',
-            field=models.ManyToManyField(blank=True, null=True, related_name='likes', to=settings.AUTH_USER_MODEL),
+            model_name="like",
+            name="likes",
+            field=models.ManyToManyField(
+                blank=True, null=True, related_name="likes", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

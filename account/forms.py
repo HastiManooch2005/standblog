@@ -3,10 +3,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
 
-
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input100'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input100'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={"class": "input100"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "input100"}))
 
 
 def clean(self):
@@ -22,4 +21,4 @@ def clean(self):
 class EditUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name','last_name' ,'email')
+        fields = ("first_name", "last_name", "email")

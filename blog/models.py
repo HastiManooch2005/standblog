@@ -14,7 +14,7 @@ class Category(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'نمونه ها'
+        verbose_name_plural = "نمونه ها"
         verbose_name = "نمونه"
 
 
@@ -23,15 +23,15 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     category = models.ManyToManyField(Category)
     body = models.TextField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to="images/")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     slug = models.SlugField(null=True, blank=True, unique=True)
-    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    likes = models.ManyToManyField(User, related_name="likes", blank=True)
 
     class Meta:
         ordering = ["-created"]
-        verbose_name_plural = 'مقاله ها'
+        verbose_name_plural = "مقاله ها"
         verbose_name = "مقاله"
 
     def save(self, *args, **kwargs):
@@ -39,36 +39,37 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('blog:detail', kwargs={'slug': self.slug})
+        return reverse("blog:detail", kwargs={"slug": self.slug})
 
     def show_image(self):
         if self.image:
-            return format_html('<img src="{}" width="100" height="100" />', self.image.url)
+            return format_html(
+                '<img src="{}" width="100" height="100" />', self.image.url
+            )
         else:
             return "عکس وجود ندارد"
 
     def total_likes(self):
         return self.likes.count()
-    #vabasetegi be request nabashe mitavanim dar model benevisim
+
+    # vabasetegi be request nabashe mitavanim dar model benevisim
     def get_snippet(self):
         return self.body[:100]
-    
-    #def get_absolute_api_url(self):
-     #   return reverse('blog : api_v1:detail', kwargs={'slug': self.slug})
-   
+
+    # def get_absolute_api_url(self):
+    #   return reverse('blog : api_v1:detail', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.title
 
 
-
-
-
 # article.comments.all()  az tarigh article dastresi pyda mikonim be comment
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', blank=True,
-                               null=True)  # yani pasokh be on comment
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    parent = models.ForeignKey(
+        "self", on_delete=models.CASCADE, related_name="replies", blank=True, null=True
+    )  # yani pasokh be on comment
     created = models.DateTimeField(auto_now_add=True)
     comment = models.TextField()
 
@@ -76,7 +77,7 @@ class Comment(models.Model):
         return self.comment[:50]
 
     class Meta:
-        verbose_name_plural = 'کامنت'
+        verbose_name_plural = "کامنت"
         verbose_name = "کامنت ها"
 
 
@@ -87,13 +88,5 @@ class Message(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = 'پیام ها'
+        verbose_name_plural = "پیام ها"
         verbose_name = "پیام"
-
-
-
-
-
-
-
-

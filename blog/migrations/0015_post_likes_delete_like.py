@@ -7,17 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0014_remove_like_post_remove_like_user_like_likes'),
+        ("blog", "0014_remove_like_post_remove_like_user_like_likes"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='likes',
-            field=models.ManyToManyField(blank=True, related_name='likes', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="likes",
+            field=models.ManyToManyField(
+                blank=True, related_name="likes", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.DeleteModel(
-            name='Like',
+            name="Like",
         ),
     ]
